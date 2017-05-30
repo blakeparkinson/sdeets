@@ -16,7 +16,7 @@ router.get('/androidlink', cors(), (req, res) => {
 router.get('/appversion', cors(), (req, res) => {
     var version = {
         ios: '1.1.1',
-        androind: '1.2.4'
+        android: '1.2.4'
     }
     res.json({result: version});
 })
