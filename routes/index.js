@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var cors = require('cors');
+var email = require('./email');
+
 
 
 /* GET home page. */
@@ -21,4 +23,10 @@ router.get('/appversion', cors(), (req, res) => {
     res.json({result: version});
 })
 
+router.get('/email', cors(), (req, res) => {
+
+    email.send( function(response){
+        console.log(response);
+    })
+})
 module.exports = router;
