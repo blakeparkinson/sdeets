@@ -1,5 +1,8 @@
 var nodemailer = require("nodemailer");
 var xoauth2 = require('xoauth2');
+var swig = require('swig');
+//var template = swig.compileFile(__dirname + '/../templates/bugreply.html');
+//var plainTemplate = swig.compileFile(__dirname + '/../templates/bugreply.txt');
 
 
 var transporter = nodemailer.createTransport("SMTP",{
@@ -17,7 +20,7 @@ var transporter = nodemailer.createTransport("SMTP",{
 module.exports = {
 
     
-    send:function( cb ){
+    send:function( err, cb ){
 
             console.log(process.env);
           var mailOptions = {
@@ -30,10 +33,9 @@ module.exports = {
 
         // send mail with defined transport object
     transporter.sendMail(mailOptions, function(error, info) {
-      console.log('info is: ' + info);
         if (error) {
             console.log('we got an error' + error);
-            cb(error);
+            err(error);
 
         } else {
             console.log('email sent');

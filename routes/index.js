@@ -25,8 +25,14 @@ router.get('/appversion', cors(), (req, res) => {
 
 router.get('/email', cors(), (req, res) => {
 
-    email.send( function(response){
-        console.log(response);
+    email.send( (error) => {
+
+        res.status( 403 ).json( error );
+
+    },
+    (response) => {
+        res.status( 200 ).json( response );
+
     })
 })
 module.exports = router;
