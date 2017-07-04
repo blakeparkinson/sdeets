@@ -23,9 +23,12 @@ router.get('/appversion', cors(), (req, res) => {
     res.json({result: version});
 })
 
-router.get('/email', cors(), (req, res) => {
+router.post('/email', cors(), (req, res) => {
 
-    email.send( (error) => {
+    //params
+    //template, icon, logo, sender (name of sender), receiver(email), subject, content, receiverName, senderName, profilePic
+
+    email.send( req.body , (error) => {
 
         res.status( 403 ).json( error );
 
