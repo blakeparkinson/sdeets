@@ -25,9 +25,9 @@ module.exports = {
           var html = template({
             //schoolLogo: options.emailOptions.logo,
             //groupIcon: options.emailOptions.icon,
-            receiverName: options.emailOptions.receiverName,
-            senderName: options.emailOptions.senderName,
-            content: options.emailOptions.content,
+            receiverName: options.receiverName,
+            senderName: options.senderName,
+            content: options.content,
             //profilePic: options.emailOptions.profilePic
         });
 
