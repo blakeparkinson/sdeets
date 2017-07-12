@@ -7,19 +7,15 @@ var swig = require('swig');
 var transporter = nodemailer.createTransport("SMTP",{
     service: 'gmail',
     auth: {
-        XOAuth2: {
-      user: `no-reply@schooldeets.com`, //process.env.GMAIL_UN, // Your gmail address.
-      clientId: `314421930389-f4ngan7qnfk956u07hhp9ikgvl927jas.apps.googleusercontent.com`, //process.env.GMAIL_CLIENT_ID,
-      clientSecret: 'CxPtNrSVI-k715gdVd_2eFtP', //process.env.GMAIL_SECRET,
-      refreshToken: '1/A2eIu3taBsQcICsiW6PQJWUDe4J7bYYP7XknupbJllA' //process.env.GMAIL_REFRESH_TOKEN
+
+
+    XOAuth2: {
+      user: process.env.GMAIL_UN, // Your gmail address.
+      clientId: process.env.GMAIL_CLIENT_ID,
+      clientSecret: process.env.GMAIL_SECRET,
+      refreshToken: process.env.GMAIL_REFRESH_TOKEN
     }
 
-    // XOAuth2: {
-    //   user: process.env.GMAIL_UN, // Your gmail address.
-    //   clientId: process.env.GMAIL_CLIENT_ID,
-    //   clientSecret: process.env.GMAIL_SECRET,
-    //   refreshToken: process.env.GMAIL_REFRESH_TOKEN
-    // }
   }
 });
 
@@ -55,7 +51,7 @@ module.exports = {
 
         } else {
             console.log('email sent');
-            cb('hi');
+            cb({success: true});
 
         }
         transporter.close();
