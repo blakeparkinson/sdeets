@@ -31,7 +31,8 @@ module.exports = {
             receiverName: options.receiverName,
             senderName: options.senderName,
             content: options.content,
-            group: options.group
+            group: options.group,
+            postId: options.postId
             //profilePic: options.emailOptions.profilePic
         });
 
