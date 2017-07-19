@@ -14,7 +14,9 @@
         </div>  
         <div style="margin-top:20px">
             <!--<img src="{{profilePic}}" style="position:absolute"/>-->
-            <div style="text-align: center; padding: 5%; background:#fff">{{content}}</div>
+            <div style="text-align: center; padding: 5%; background:#fff">
+                {{content|safe}} or {%raw%} {{content}}{%endraw%}
+                </div>
         </div>
        <div style="text-align: center; margin-top:20px;">
             <a href="schooldeets://{{postId}}" style="padding: 12px 15px; text-align: center;background: #0c769d;color: #fff;border-radius: 4px;">
