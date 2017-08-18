@@ -10,9 +10,26 @@
 
     if ( window.mobileAndTabletcheck()){
 
+        var idParam = getParameterByName('postId', window.location.href);
+        if (idParam.lenth){
+            window.location.href=`schooldeets://${idParam}`;
+        }
     }
     else{
-        console.log('sup');
+        var urlParam = getParameterByName('postUrl', window.location.href);
+        if (urlParam.length){
+            window.location.href = `https://dev2.schooldeets.com/sdpost/${urlParam}`
+        }
+    }
+
+    function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
     }
 
 })()
