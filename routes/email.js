@@ -33,7 +33,8 @@ module.exports = {
             content: options.content,
             group: options.group,
             postId: options.postId,
-            userId: options.userId
+            userId: options.userId,
+            postUrl: options.postUrl
             //profilePic: options.emailOptions.profilePic
         });
 
