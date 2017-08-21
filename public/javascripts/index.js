@@ -11,7 +11,7 @@
     if ( window.mobileAndTabletcheck()){
 
         var idParam = getParameterByName('postId', window.location.href);
-        if (idParam.lenth){
+        if (idParam.length){
             window.location.href=`schooldeets://${idParam}`;
         }
     }
