@@ -8,16 +8,30 @@
     
     };
 
+    var button = document.getElementById('installButton');
+
     if ( window.mobileAndTabletcheck()){
 
+        var os = getMobileOperatingSystem();
+        if (os == 'Android' ){
+            button.href = 'https://play.google.com/store/apps/details?id=com.schooldeets.app';
+        }
+        else if (os == 'iOS'){
+            button.href = 'https://itunes.apple.com/us/app/school-deets/id1109287736?mt=8';
+
+        }
+        else{
+            button.remove();
+        }
         var idParam = getParameterByName('postId', window.location.href);
-        if (idParam.length){
+        if (idParam && idParam.length){
             window.location.href=`schooldeets://${idParam}`;
         }
     }
     else{
+        button.remove();
         var urlParam = getParameterByName('postUrl', window.location.href);
-        if (urlParam.length){
+        if (urlParam && urlParam.length){
             window.location.href = `https://dev2.schooldeets.com/sdpost/${urlParam}`
         }
     }
@@ -31,5 +45,25 @@
         if (!results[2]) return '';
         return decodeURIComponent(results[2].replace(/\+/g, " "));
     }
+
+    function getMobileOperatingSystem() {
+        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+            // Windows Phone must come first because its UA also contains "Android"
+            if (/windows phone/i.test(userAgent)) {
+                return "Windows Phone";
+            }
+
+            if (/android/i.test(userAgent)) {
+                return "Android";
+            }
+
+            // iOS detection from: http://stackoverflow.com/a/9039885/177710
+            if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                return "iOS";
+            }
+
+    return "unknown";
+}
 
 })()
