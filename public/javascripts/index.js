@@ -32,7 +32,7 @@
         button.remove();
         var urlParam = getParameterByName('postUrl', window.location.href);
         if (urlParam && urlParam.length){
-            window.location.href = `https://dev2.schooldeets.com/sdpost/${urlParam}`
+            window.location.href = `https://app.schooldeets.com/sdpost/${urlParam}`
         }
     }
 
