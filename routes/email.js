@@ -53,7 +53,8 @@ module.exports = {
             err(error);
 
         } else {
-            console.log('email sent to ' + mailOptions.to);
+            var tt = new Date().getTime()
+            console.log('email sent to ' + mailOptions.to + ' at ' + tt;
 
             cb({success: true});
 
