@@ -53,11 +53,12 @@ module.exports = {
             err(error);
 
         } else {
-            console.log('email sent');
+            console.log('email sent to ' + mailOptions.to);
+
             cb({success: true});
 
         }
-        transporter.close();
+        //transporter.close();
     });
 
 
