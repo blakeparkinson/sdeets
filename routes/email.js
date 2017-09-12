@@ -1,23 +1,32 @@
 var nodemailer = require("nodemailer");
 var xoauth2 = require('xoauth2');
 var swig = require('swig');
+var ses = require('nodemailer-ses-transport');
+
 //var plainTemplate = swig.compileFile(__dirname + '/../templates/bugreply.txt');
 
 
-var transporter = nodemailer.createTransport("SMTP",{
-    service: 'gmail',
-    auth: {
+// var transporter = nodemailer.createTransport("SMTP",{
+//     service: 'gmail',
+//     auth: {
 
 
-    XOAuth2: {
-      user: process.env.GMAIL_UN, // Your gmail address.
-      clientId: process.env.GMAIL_CLIENT_ID,
-      clientSecret: process.env.GMAIL_SECRET,
-      refreshToken: process.env.GMAIL_REFRESH_TOKEN
-    }
+//     XOAuth2: {
+//       user: process.env.GMAIL_UN, // Your gmail address.
+//       clientId: process.env.GMAIL_CLIENT_ID,
+//       clientSecret: process.env.GMAIL_SECRET,
+//       refreshToken: process.env.GMAIL_REFRESH_TOKEN
+//     }
 
-  }
+//   }
+// });
+
+var transporter = nodemailer.createTransport('SES', {
+    AWSAccessKeyID: process.env.AWS_KEY,
+    AWSSecretKey: process.env.AWS_SECRET,
+    SeviceUrl:"https://email.us-west-1.amazonaws.com"
 });
+
 
 module.exports = {
 
@@ -39,8 +48,8 @@ module.exports = {
         });
 
           var mailOptions = {
-
-            from: options.senderName, // sender address
+            transport: transporter,
+            from: 'wizardplow@gmail.com', // sender address
             to: options.receiver, // list of receivers
             subject: options.subject, // Subject line
             html: html
@@ -49,7 +58,7 @@ module.exports = {
         // send mail with defined transport object
     transporter.sendMail(mailOptions, function(error, info) {
         if (error) {
-            console.log('we got an error' + error);
+            console.log('we got an error: ' + error);
             err(error);
 
         } else {
@@ -59,7 +68,6 @@ module.exports = {
             cb({success: true});
 
         }
-        //transporter.close();
     });
 
 
