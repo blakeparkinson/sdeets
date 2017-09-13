@@ -49,7 +49,7 @@ module.exports = {
 
           var mailOptions = {
             transport: transporter,
-            from: 'wizardplow@gmail.com', // sender address
+            from: 'no-reply@schooldeets.com', // sender address
             to: options.receiver, // list of receivers
             subject: options.subject, // Subject line
             html: html
