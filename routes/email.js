@@ -3,24 +3,6 @@ var xoauth2 = require('xoauth2');
 var swig = require('swig');
 var ses = require('nodemailer-ses-transport');
 
-//var plainTemplate = swig.compileFile(__dirname + '/../templates/bugreply.txt');
-
-
-// var transporter = nodemailer.createTransport("SMTP",{
-//     service: 'gmail',
-//     auth: {
-
-
-//     XOAuth2: {
-//       user: process.env.GMAIL_UN, // Your gmail address.
-//       clientId: process.env.GMAIL_CLIENT_ID,
-//       clientSecret: process.env.GMAIL_SECRET,
-//       refreshToken: process.env.GMAIL_REFRESH_TOKEN
-//     }
-
-//   }
-// });
-
 var transporter = nodemailer.createTransport('SES', {
     AWSAccessKeyID: process.env.AWS_KEY,
     AWSSecretKey: process.env.AWS_SECRET,
