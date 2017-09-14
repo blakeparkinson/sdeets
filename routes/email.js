@@ -6,7 +6,7 @@ var ses = require('nodemailer-ses-transport');
 var transporter = nodemailer.createTransport('SES', {
     AWSAccessKeyID: process.env.AWS_KEY,
     AWSSecretKey: process.env.AWS_SECRET,
-    SeviceUrl:"https://email.us-west-1.amazonaws.com"
+    region: 'us-west-2' 
 });
 
 
